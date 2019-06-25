@@ -1,0 +1,64 @@
+<databaseChangeLog
+  xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+         http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.1.xsd">
+
+	<!-- <changeSet author="KamalBatcha (generated)" id="1" runOnChange="true">
+		<preConditions onError="MARK_RAN" onFail="MARK_RAN">
+		</preConditions>
+		<createTable tableName="skill">
+			<column autoIncrement="true" name="skill_id" type="java.sql.Types.INTEGER">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="skill_name" type="java.sql.Types.VARCHAR(255)">
+				<constraints />
+			</column>
+			<column name="user_user_id" type="java.sql.Types.INTEGER">
+				<constraints />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="KamalBatcha (generated)" id="2" runOnChange="true">
+		<preConditions onError="MARK_RAN" onFail="MARK_RAN">
+		</preConditions>
+		<createTable tableName="user">
+			<column autoIncrement="true" name="user_id" type="java.sql.Types.INTEGER">
+				<constraints nullable="false" primaryKey="true" />
+			</column>
+			<column name="user_name" type="java.sql.Types.VARCHAR(255)">
+				<constraints />
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="KamalBatcha (generated)" id="3" runOnChange="true">
+		<preConditions onError="MARK_RAN" onFail="MARK_RAN">
+		</preConditions>
+		<createTable tableName="user_skills">
+			<column name="user_user_id" type="java.sql.Types.INTEGER">
+				<constraints nullable="false"/>
+			</column>
+			<column name="skills_skill_id" type="java.sql.Types.INTEGER">
+				<constraints nullable="false"/>
+			</column>
+		</createTable>
+	</changeSet>
+
+	<changeSet author="KamalBatcha (generated)" id="4" runOnChange="true">
+		<preConditions onError="MARK_RAN" onFail="MARK_RAN">
+		</preConditions>
+
+		<addForeignKeyConstraint baseTableName="skill" baseColumnNames="user_user_id"
+  			constraintName="FKoltqjw3ksh6imscn8fj0005ic"
+  			referencedTableName="user" referencedColumnNames="user_id"/>
+		<addForeignKeyConstraint baseTableName="user_skills" baseColumnNames="skills_skill_id"
+  			constraintName="FKhldxm9f3s2au0465kxfykfx22"
+  			referencedTableName="skill" referencedColumnNames="skill_id"/>
+		<addForeignKeyConstraint baseTableName="user_skills" baseColumnNames="user_user_id"
+  			constraintName="FKiaw3w6ysslb7vfe7trlo8o6s2"
+  			referencedTableName="user" referencedColumnNames="user_id"/>
+	</changeSet> -->
+
+</databaseChangeLog>
