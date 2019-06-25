@@ -22,10 +22,14 @@ public class LoginController {
 
     @RequestMapping(value={"/login"}, method = RequestMethod.GET)
     public ModelAndView login(){
-    	System.out.println("test");
-        ModelAndView modelAndView = new ModelAndView();
-        modelAndView.setViewName("login");
-        return modelAndView;
+    	Authentication auth = SecurityContextHolder.getContext().getAuthentication();
+    	if(auth.getPrincipal().equals("anonymousUser")) {
+    		ModelAndView modelAndView = new ModelAndView();
+            modelAndView.setViewName("login");
+            return modelAndView;
+    	}
+    	return new ModelAndView("redirect:/");
+        
     }
 
 

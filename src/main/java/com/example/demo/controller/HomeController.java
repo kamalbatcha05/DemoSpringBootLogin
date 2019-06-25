@@ -7,7 +7,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 @Controller
 public class HomeController {
-	@RequestMapping("/")
+	@RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
 	public String home() {
 		return "productList";
 	}
