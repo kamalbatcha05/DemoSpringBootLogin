@@ -19,9 +19,6 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User {
-
-	// Default constructor required by JPA
-    public User() {}
     
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -32,8 +29,8 @@ public class User {
     @Column(name = "password")
     @Length(min = 5, message = "*Your password must have at least 5 characters")
     private String password;
-    @Column(name = "name")
-    private String name;
+    @Column(name = "first_name")
+    private String firstName;
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "active")
@@ -50,15 +47,15 @@ public class User {
         return id;
     }
     
-    public void setName(String name) {
-        this.name = name;
-    }
+    public String getFirstName() {
+		return firstName;
+	}
 
-    public String getName() {
-        return name;
-    }
-    
-    public void setEmail(String email) {
+	public void setFirstName(String firstName) {
+		this.firstName = firstName;
+	}
+
+	public void setEmail(String email) {
         this.email = email;
     }
 

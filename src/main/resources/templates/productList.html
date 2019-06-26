@@ -14,7 +14,19 @@
 	
 	<div class="container">
 		<div class="row">
-			
+<table class="table table-striped">
+        <tr>
+            <th>Id</th>
+            <th>Name</th>
+        </tr>
+        <tr th:each="product : ${products}">
+            <td th:text="${product.id}"></td>
+            <td th:text="${product.productName}"></td>
+        </tr>
+    </table>
+<!-- 			<div th:each="data, row: ${products}" th:with="numList=${#strings.listSplit('3,2,1,0', ',')}" th:if="${row.current} % 4 == 0" class="span3"> -->
+<!-- 			    <span th:each="num : ${numList}" th:with="dataIndex=(${row.index} - ${num})" th:text="${products[dataIndex]}">Product</span> -->
+<!-- 			</div> -->
 		</div>
 	</div>
 
