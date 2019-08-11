@@ -14,13 +14,32 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.validator.constraints.NotEmpty;
 
+import com.example.demo.utils.JsonObjectSerializer;
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.databind.annotation.JsonSerialize;
+
 @Entity
 @Table(name = "product")
+@JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Product {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "product_id")
 	private int id;
+
+	@NotEmpty
+	@Column(name = "product_name")
+	@Size(max = 25)
+	private String productName;
+
+	@Column(name = "decription")
+	@Size(max = 255)
+	private String description;
+
+	@ManyToOne
+	@JoinColumn(name = "category_id", nullable = false)
+	@JsonSerialize(using = JsonObjectSerializer.class)
+	private Category category;
 
 	public int getId() {
 		return id;
@@ -53,17 +72,4 @@ public class Product {
 	public void setCategory(Category category) {
 		this.category = category;
 	}
-
-	@NotEmpty
-	@Column(name = "product_name")
-	@Size(max = 25)
-	private String productName;
-
-	@Column(name = "decription")
-	@Size(max = 255)
-	private String description;
-
-	@ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
-	@JoinColumn(name = "category_id", nullable = false)
-	private Category category;
 }

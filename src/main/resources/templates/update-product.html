@@ -19,47 +19,43 @@
 	<div class="container home-panel">
 		<div class="row">
 			<div class="col-md-6 col-md-offset-3">
-				<form autocomplete="off" action="#" th:action="@{/registration}"
-					th:object="${user}" method="post" class="form-horizontal"
+				<form autocomplete="off" action="#" th:action="@{/update-product}"
+					th:object="${product}" th:method="PUT" class="form-horizontal"
 					role="form">
-					<h2>Registration Form</h2>
+					<h2>Update Product</h2>
 					<div class="form-group">
 						<div class="col-sm-9">
-						<label th:if="${#fields.hasErrors('firstName')}" th:errors="*{firstName}"
+						<label th:if="${#fields.hasErrors('productName')}" th:errors="productName"
 								class="validation-message"></label>
-						<input type="text" th:field="*{firstName}" placeholder="First Name"
+						<input type="text" th:field="*{productName}" placeholder="Product Name"
 								class="form-control" /> 
 						</div>
 					</div>
 
 					<div class="form-group">
 						<div class="col-sm-9">
-						<label	th:if="${#fields.hasErrors('lastName')}" th:errors="*{lastName}"
+						<label	th:if="${#fields.hasErrors('description')}" th:errors="*{description}"
 								class="validation-message"></label>
-							<input type="text" th:field="*{lastName}"
-								placeholder="Last Name" class="form-control" /> 
+							<input type="text" th:field="*{description}"
+								placeholder="Description" class="form-control" /> 
 						</div>
 					</div>
+					
 					<div class="form-group">
 						<div class="col-sm-9">
-							<input type="text" th:field="*{email}" placeholder="Email"
-								class="form-control" /> <label
-								th:if="${#fields.hasErrors('email')}" th:errors="*{email}"
-								class="validation-message"></label>
+								<select th:field="*{category}" >								
+									<option th:each="category : ${categories}" th:value="${category.id}" 
+										th:text="${category.categoryName}">
+							    	</option>
+								</select>
 						</div>
 					</div>
-					<div class="form-group">
-						<div class="col-sm-9">
-							<input type="password" th:field="*{password}"
-								placeholder="Password" class="form-control" /> <label
-								th:if="${#fields.hasErrors('password')}" th:errors="*{password}"
-								class="validation-message"></label>
-						</div>
-					</div>
+					 
+					<input type="hidden" th:field="*{id}" />
 
 					<div class="form-group">
 						<div class="col-sm-9">
-							<button type="submit" class="btn btn-primary btn-block">Register User</button>
+							<button type="submit" class="btn btn-primary btn-block">Update</button>
 						</div>
 					</div>
 					
@@ -70,6 +66,7 @@
 			</div>
 		</div>
 	</div>
+
 
 <div th:replace="fragments/footer :: footer">Footer</div>
 </body>
