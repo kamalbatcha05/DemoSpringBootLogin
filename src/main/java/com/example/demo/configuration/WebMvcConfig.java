@@ -52,7 +52,7 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
-		// TODO Auto-generated method stub
+        configurer.enable();
 		
 	}
 
@@ -76,7 +76,11 @@ public class WebMvcConfig implements WebMvcConfigurer {
 
 	@Override
 	public void addCorsMappings(CorsRegistry registry) {
-		// TODO Auto-generated method stub
+		registry.addMapping("/**")
+        .allowedOrigins("*")
+        .allowedMethods("*")
+        .allowedHeaders("*")
+		.allowCredentials(true);
 		
 	}
 

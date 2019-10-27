@@ -1,6 +1,6 @@
 <!DOCTYPE html>
-<html lang="en" xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:th="http://www.thymeleaf.org">
+<html xmlns:th="http://www.thymeleaf.org">
+
 <head>
 	<title>Products</title>
 	<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
@@ -42,8 +42,19 @@
 
 
 	
-	 
+<!-- <h2>Welcome</h2> -->
+<!-- 	<p>Spring Security Thymeleaf tutorial</p> -->
+<!-- 	<div sec:authorize="hasRole('USER')">Text visible to user.</div> -->
+<!-- 	<div sec:authorize="hasRole('ADMIN')">Text visible to admin.</div> -->
+<!-- 	<div sec:authorize="isAuthenticated()">Text visible only to -->
+<!-- 		authenticated users.</div> -->
+<!-- 	Authenticated username: -->
+<!-- 	<div sec:authentication="name"></div> -->
+<!-- 	Authenticated user roles: -->
+<!-- 	<div sec:authentication="principal.authorities"></div>	  -->
 	
+
+
 	<div class="container product-container">
          <div class="product-preview-container" th:each="product : ${productList}">
             <ul>

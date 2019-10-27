@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -17,6 +18,7 @@ import com.example.demo.entity.Product;
 import com.example.demo.service.ProductService;
 
 @Controller
+//@CrossOrigin(origins = "*")
 public class HomeController {
 	
 	@Autowired
@@ -24,15 +26,6 @@ public class HomeController {
 	
 	@RequestMapping(value={"/", "/index"}, method = RequestMethod.GET)
 	public ModelAndView home() {
-		/*ModelAndView modelAndView = new ModelAndView();
-		List<Product> products = productService.getAllProducts();
-		System.out.println("=========Products========" + products);
-		modelAndView.addObject("products", products);
-		products.parallelStream().forEach(f -> {
-			System.out.println(f.getProductName());
-		});
-		modelAndView.setViewName("productList");
-		return modelAndView;*/
 		ModelAndView modelAndView = new ModelAndView("productListPaging");
         PageRequest pageable = new PageRequest(0, 9);
         Page<Product> productPage = productService.getPaginatedProducts(pageable);
@@ -51,7 +44,7 @@ public class HomeController {
         return modelAndView;
 	}
 	
-	@RequestMapping(value = "/products/page/{page}")
+	@RequestMapping(value = "	{page}")
     public ModelAndView listProductsPageByPage(@PathVariable("page") int page) {
         ModelAndView modelAndView = new ModelAndView("productListPaging");
         PageRequest pageable = new PageRequest(page - 1, 9);
