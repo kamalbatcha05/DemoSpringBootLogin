@@ -1,23 +1,25 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    
-<!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+<head>
 
-    <title>Product Detail</title>
-	<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
-	<link rel="stylesheet" type="text/css" th:href="@{/css/viewProduct.css}" />
-	<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
-  	<script src="/js/jquery-3.0.0.min.js"></script>
-  	<script src="/js/bootstrap.min.js"></script>
-    
 
-  </head>
+<title>Product Detail</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/viewProduct.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<script src="/js/jquery-3.0.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
 
-  <body>
-  	<div th:replace="fragments/header :: header">Header</div>
-	
-	<div class="container">
+<link rel="icon" type="image/png" href="/img/icons/title-icon.png"/>
+
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header">Header</div>
+
+	<!-- <div class="container">
 		<div class="card">
 			<div class="container-fliud">
 				<div class="wrapper row">
@@ -25,18 +27,18 @@
 						
 						<div class="preview-pic tab-content">
 						  <div class="tab-pane active" id="pic-1"><img src="/img/medikit.png" /></div>
-						  <!-- <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
 						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
-						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div> -->
+						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
 						</div>
-						<!-- <ul class="preview-thumbnail nav nav-tabs">
+						<ul class="preview-thumbnail nav nav-tabs">
 						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
 						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
 						  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
 						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
 						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
-						</ul> -->
+						</ul>
 						
 					</div>
 					<div class="details col-md-6">
@@ -73,8 +75,175 @@
 				</div>
 			</div>
 		</div>
+	</div> -->
+
+	<section class="headBg theme2 bread-right">
+		<div class="wrap">
+			<div class="page-title-inner fo">
+				<!-- header ends -->
+
+				<div class="h1">
+					<h1 th:text="${product.productName}"></h1>
+				</div>
+				<p class="breadcrumb ar uu small">
+					<a href="/" title="Home">Home</a>
+					<b class="ffv p2px">/</b> <a href="/customer/products" title="Products">Products</a>
+<!-- 					<b class="ffv p2px">></b> <a href="surgical-kits.htm" title="">Surgical -->
+<!-- 						Kits</a> -->
+						<b class="ffv p2px">/</b> <span class="" th:text="${product.productName}"></span>
+				</p>
+				
+			</div>
+		</div>
+	</section>
+
+
+
+	<div id="middle">
+		<div id="bodyFormatNT" class="wrap thinFormat">
+			<div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 page-container">
+			
+			<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+			
+			<div class="">
+		<div class="card">
+			<div class="container-fliud">
+				<div class="wrapper row">
+					<h3 class="product-title" th:text="${product.productName}"></h3>
+				</div>
+				<div class="wrapper row">
+					<div class="preview col-md-6">
+						
+						<div class="preview-pic tab-content">
+						  <div class="tab-pane active" id="pic-1"><img src="/img/medikit.png" /></div>
+						  <div class="tab-pane" id="pic-2"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-3"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-4"><img src="http://placekitten.com/400/252" /></div>
+						  <div class="tab-pane" id="pic-5"><img src="http://placekitten.com/400/252" /></div>
+						</div>
+						<ul class="preview-thumbnail nav nav-tabs">
+						  <li class="active"><a data-target="#pic-1" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-2" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-3" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-4" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						  <li><a data-target="#pic-5" data-toggle="tab"><img src="http://placekitten.com/200/126" /></a></li>
+						</ul>
+						
+					</div>
+				</div>
+				<div class="wrapper row">
+					<div class="details col-lg-12 col-md-12 col-sm-12 col-xs-12" style="padding: 5%;">
+						
+						<!-- <div class="rating">
+							<div class="stars">
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star checked"></span>
+								<span class="fa fa-star"></span>
+								<span class="fa fa-star"></span>
+							</div>
+						</div> -->
+						<p class="product-description" th:text="${product.description}"></p>
+						<!-- <h4 class="price">current price: <span>$180</span></h4>
+						<p class="vote"><strong>91%</strong> of buyers enjoyed this product! <strong>(87 votes)</strong></p>
+						<h5 class="sizes">sizes:
+							<span class="size" data-toggle="tooltip" title="small">s</span>
+							<span class="size" data-toggle="tooltip" title="medium">m</span>
+							<span class="size" data-toggle="tooltip" title="large">l</span>
+							<span class="size" data-toggle="tooltip" title="xtra large">xl</span>
+						</h5>
+						<h5 class="colors">colors:
+							<span class="color orange not-available" data-toggle="tooltip" title="Not In store"></span>
+							<span class="color green"></span>
+							<span class="color blue"></span>
+						</h5>
+						<div class="action">
+							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
+							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
+						</div> -->
+					</div>
+				</div>
+			</div>
+		</div>
 	</div>
 	
+			</div>
+
+
+
+				<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+					<div class="column_Box mc thinColumnLink">
+						<div class="tcl bullet divider dif">
+							<div class="h h2">
+								<b class="plusMinus"></b>
+								<p class="b dif rHead">
+									<a href="/customer/products" class="dif" title="Products">Products</a>
+								</p>
+							</div>
+							<div class="ic showHide_rp">
+							
+							<div th:each="category : ${categories}">
+								<ul>
+									<li><b class="b2 fl"></b>
+										<p class="ofh b">
+											
+												<span th:utext="${category.categoryName}"></span>
+										</p>
+										<div th:each="product : ${category.products}">
+										<ul class="">
+											<li><b class="b3 fl"></b>
+												<p class="ofh">
+													<a th:href="@{|/view-product/${product.id}|}"
+															title="">
+													<span th:utext="${product.productName}"></span></a>
+												</p></li>
+										</ul>
+										
+										</div>
+									</li>
+									
+								</ul>
+							</div>
+							
+							
+								
+							</div>
+						</div>
+					</div>
+					<div class="column_Box mc qc">
+						<div class="h h2">
+							<b class="plusMinus"></b>
+							<p class="b dif rHead">Contact Us</p>
+						</div>
+						<div class="ic showHide_rp">
+							<div class="uu lh13em">
+								<p class="dif b">NRA Groups</p>
+								<p class="hr bdrB"></p>
+								<p>229, Sarita, Prabhat Industrial Estate, Near Dahisar Toll
+									Naka, Dahisar East, Dahisar, Mumbai, Maharashtra - 400068,
+									India</p>
+								<p class="hr bdrB"></p>
+								<p>
+									<b>Mobile :</b> +91-9819324236, +91-9819324232
+								</p>
+								<p class="hr bdrB"></p>
+								<p>
+									<b>Phone :</b> +91-22-28225998
+								</p>
+								<p class="hr bdrB"></p>
+								<p>
+									<b>Call Us : </b><span class="b dif large">08049672131</span>
+								</p>
+								<p class="hr bdrB"></p>
+							</div>
+						</div>
+					</div>
+				</div>
+
+			</div>
+		</div>
+	</div>
+
 	<div th:replace="fragments/footer :: footer">Footer</div>
-  </body>
+</body>
 </html>

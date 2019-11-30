@@ -20,6 +20,8 @@ public interface ProductService {
 	
     void saveProduct(Product product);
     
+    Product updateProduct(Product product);
+    
     Product getProductById(int id);
     
     void deleteProduct(int id);

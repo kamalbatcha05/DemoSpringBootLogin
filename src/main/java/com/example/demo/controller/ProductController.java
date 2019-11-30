@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -20,6 +21,7 @@ import com.example.demo.entity.Category;
 import com.example.demo.entity.Product;
 import com.example.demo.service.CategoryService;
 import com.example.demo.service.ProductService;
+import com.example.demo.utils.Constants;
 
 @Controller
 public class ProductController {
@@ -40,6 +42,15 @@ public class ProductController {
 	 * modelAndView.addObject("products", products);
 	 * modelAndView.setViewName("productList"); return modelAndView; }
 	 */
+	
+	@RequestMapping(value={"/customer/products"}, method = RequestMethod.GET)
+	public ModelAndView home() {
+		ModelAndView modelAndView = new ModelAndView("productListPaging");
+		List<Category> categories = categoryService.getAllCategories();
+        modelAndView.addObject("categories", categories);
+        
+        return modelAndView;
+	}
 
 	 @RequestMapping(value="/add-product", method = RequestMethod.GET)
 	    public ModelAndView addProduct(){
@@ -54,8 +65,8 @@ public class ProductController {
 	@RequestMapping(value= "/add-product", method= RequestMethod.POST)
 	public ModelAndView saveProduct(@Valid Product product, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
-//		Category category = productService.getCategoryById(1);
-//		product.setCategory(category);
+		product.setStatus(null != product && null != product.getStatus() ?
+				product.getStatus() : Constants.ACTIVE);
 		productService.saveProduct(product);
 		modelAndView.addObject("successMessage", "Product added successfully");
         modelAndView.addObject("product", new Product());
@@ -91,6 +102,10 @@ public class ProductController {
         ModelAndView modelAndView = new ModelAndView();
         Product product = productService.getProductById(productId);
         modelAndView.addObject("product", product);
+        
+        List<Category> categories = categoryService.getAllCategories();
+        modelAndView.addObject("categories", categories);
+        
         modelAndView.setViewName("view-product");
         return modelAndView;
 	}
@@ -101,6 +116,8 @@ public class ProductController {
     public ModelAndView editProduct(@PathVariable("id") int productId){
         ModelAndView modelAndView = new ModelAndView();
         Product product = productService.getProductById(productId);
+        String[] statusValues = new String[] {Constants.ACTIVE, Constants.IN_ACTIVE};
+		modelAndView.addObject("statusValues", Arrays.asList(statusValues));
         modelAndView.addObject("product", product);
         modelAndView.addObject("categories", categoryService.getAllCategories());
         modelAndView.setViewName("update-product");
@@ -111,7 +128,9 @@ public class ProductController {
 	public ModelAndView updateProduct(@Valid Product product, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 		
-		productService.saveProduct(product);
+		product = productService.updateProduct(product);
+        String[] statusValues = new String[] {Constants.ACTIVE, Constants.IN_ACTIVE};
+		modelAndView.addObject("statusValues", Arrays.asList(statusValues));
 		modelAndView.addObject("successMessage", "Product updated successfully");
         modelAndView.addObject("product", product);
         modelAndView.addObject("categories", categoryService.getAllCategories());

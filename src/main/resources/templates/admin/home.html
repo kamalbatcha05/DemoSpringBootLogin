@@ -8,6 +8,8 @@
   	<script src="/js/common.js"></script>
   	<script src="/js/jquery-3.0.0.min.js"></script>
   	<script src="/js/bootstrap.min.js"></script>
+  	
+	<link rel="icon" type="image/png" href="/img/icons/title-icon.png"/>
 </head>
 <body>
 	<div th:replace="fragments/header :: header">Header</div>
@@ -16,16 +18,28 @@
 	</form> -->	
 	
 	<div class="container home-panel">
-		<div class="row">
+		<div class="row" style="padding:1%;">
 			<span th:utext="${userName}"></span>
 		</div>
-		<div class="row">
+		<div class="row" style="padding:1%;">
 			<span th:utext="${adminMessage}"></span>
 		</div>
-		
-		<form th:action="@{/add-product}" method="get">
-			<button class="btn btn-md btn-warning btn-block" type="Submit">Add New Product</button>
-		</form>
+		<div class="row" style="padding:1%;">
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<form th:action="@{/add-product}" method="get">
+					<button class="btn btn-md btn-primary btn-block" type="Submit">Add
+						New Product</button>
+				</form>
+			</div>
+		</div>
+		<div class="row" style="padding:1%;">
+			<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+				<form th:action="@{/add-category}" method="get">
+					<button class="btn btn-md btn-primary btn-block" type="Submit">Add
+						New Category</button>
+				</form>
+			</div>
+		</div>
 	</div>
 
 

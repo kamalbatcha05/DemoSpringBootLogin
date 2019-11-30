@@ -8,6 +8,8 @@
   	<script src="/js/jquery-3.0.0.min.js"></script>
   	<script src="/js/bootstrap.min.js"></script>
   	<script src="/js/common.js"></script>
+  	
+  	<link rel="icon" type="image/png" href="/img/icons/title-icon.png"/>
 </head>
 <body>
 <div th:replace="fragments/header :: header">Header</div>
@@ -25,11 +27,11 @@
 	
 	<div class="container product-list-container" >
 		<div class="row">
-<table class="table table-striped">
+<table class="table table-striped" id="products">
         <tr>
             <th>Id</th>
             <th>Name</th>
-            <th>Description</th>
+            <th>Status</th>
             <th>Actions</th>
         </tr>
         <tr th:each="product : ${products}">
@@ -39,7 +41,7 @@
                   </a>
             </td>
             <td th:text="${product.productName}"></td>
-            <td th:text="${product.description}"></td>
+            <td th:text="${product.status}"></td>
             <td>
 	            <form th:action="@{|/edit-product/${product.id}|}" method="get">
 					<button class="btn btn-primary" type="Submit">Edit</button>
@@ -83,6 +85,7 @@
 </div>
 
 <div th:replace="fragments/footer :: footer">Footer</div>
+
 
 </body>
 </html>

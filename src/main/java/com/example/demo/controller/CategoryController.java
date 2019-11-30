@@ -1,5 +1,6 @@
 package com.example.demo.controller;
 
+import java.util.Arrays;
 import java.util.List;
 import java.util.stream.Collectors;
 import java.util.stream.IntStream;
@@ -18,6 +19,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entity.Category;
 import com.example.demo.service.CategoryService;
+import com.example.demo.utils.Constants;
 
 @Controller
 public class CategoryController {
@@ -37,6 +39,8 @@ public class CategoryController {
 	@RequestMapping(value = "/add-category", method = RequestMethod.POST)
 	public ModelAndView saveCategory(@Valid Category category, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
+		category.setStatus(null != category && null != category.getStatus() ?
+				category.getStatus() : Constants.ACTIVE);
 		categoryService.saveCategory(category);
 		modelAndView.addObject("successMessage", "Category added successfully");
 		modelAndView.addObject("category", new Category());
@@ -76,6 +80,8 @@ public class CategoryController {
 	public ModelAndView editCategory(@PathVariable("id") int categoryId) {
 		ModelAndView modelAndView = new ModelAndView();
 		Category category = categoryService.getCategoryById(categoryId);
+		String[] statusValues = new String[] {Constants.ACTIVE, Constants.IN_ACTIVE};
+		modelAndView.addObject("statusValues", Arrays.asList(statusValues));
 		modelAndView.addObject("category", category);
 		modelAndView.setViewName("update-category");
 		return modelAndView;
@@ -85,7 +91,9 @@ public class CategoryController {
 	public ModelAndView updateCategory(@Valid Category category, BindingResult bindingResult) {
 		ModelAndView modelAndView = new ModelAndView();
 
-		categoryService.saveCategory(category);
+		category = categoryService.updateCategory(category);
+        String[] statusValues = new String[] {Constants.ACTIVE, Constants.IN_ACTIVE};
+		modelAndView.addObject("statusValues", Arrays.asList(statusValues));
 		modelAndView.addObject("successMessage", "Category updated successfully");
 		modelAndView.addObject("category", category);
 		modelAndView.setViewName("update-category");

@@ -1,9 +1,9 @@
 package com.example.demo.entity;
 
-import javax.persistence.CascadeType;
+import java.util.Date;
+
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -12,6 +12,8 @@ import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.NotEmpty;
 
 import com.example.demo.utils.JsonObjectSerializer;
@@ -31,15 +33,27 @@ public class Product {
 	@Column(name = "product_name")
 	@Size(max = 25)
 	private String productName;
+	
+	@NotEmpty
+	@Column(name = "status")
+	@Size(max = 25)
+	private String status;
 
-	@Column(name = "decription")
-	@Size(max = 255)
+	@Column(name = "description")
 	private String description;
 
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	@JsonSerialize(using = JsonObjectSerializer.class)
 	private Category category;
+
+	@CreationTimestamp
+	@Column(name = "created_date")
+    private Date createdDateTime;
+
+	@UpdateTimestamp
+	@Column(name = "updated_date")
+	private Date updatedDateTime;
 
 	public int getId() {
 		return id;
@@ -57,6 +71,14 @@ public class Product {
 		this.productName = productName;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -71,5 +93,21 @@ public class Product {
 
 	public void setCategory(Category category) {
 		this.category = category;
+	}
+ 
+    public Date getCreatedDateTime() {
+		return createdDateTime;
+	}
+
+	public void setCreatedDateTime(Date createdDateTime) {
+		this.createdDateTime = createdDateTime;
+	}
+
+	public Date getUpdatedDateTime() {
+		return updatedDateTime;
+	}
+
+	public void setUpdatedDateTime(Date updatedDateTime) {
+		this.updatedDateTime = updatedDateTime;
 	}
 }

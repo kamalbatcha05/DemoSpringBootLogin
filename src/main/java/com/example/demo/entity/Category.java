@@ -1,5 +1,6 @@
 package com.example.demo.entity;
 
+import java.util.Date;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,6 +15,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.validation.constraints.Size;
 
+import org.hibernate.annotations.CreationTimestamp;
+import org.hibernate.annotations.UpdateTimestamp;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
@@ -29,13 +32,25 @@ public class Category {
 	@Column(name = "category_name")
 	@Size(max = 25)
 	private String categoryName;
+	
+	@NotEmpty
+	@Column(name = "status")
+	@Size(max = 25)
+	private String status;
 
 	@Column(name = "description")
-	@Size(max = 255)
 	private String description;
 
 	@OneToMany(fetch = FetchType.EAGER, mappedBy = "category", cascade = CascadeType.ALL)
 	private Set<Product> products = new HashSet<Product>();
+
+	@CreationTimestamp
+	@Column(name = "created_date")
+    private Date createdDateTime;
+
+	@UpdateTimestamp
+	@Column(name = "updated_date")
+    private Date updatedDateTime;
 
 	public int getId() {
 		return id;
@@ -53,6 +68,14 @@ public class Category {
 		this.categoryName = categoryName;
 	}
 
+	public String getStatus() {
+		return status;
+	}
+
+	public void setStatus(String status) {
+		this.status = status;
+	}
+
 	public String getDescription() {
 		return description;
 	}
@@ -67,5 +90,21 @@ public class Category {
 
 	public void setProducts(Set<Product> products) {
 		this.products = products;
+	}
+ 
+    public Date getCreatedDateTime() {
+		return createdDateTime;
+	}
+
+	public void setCreatedDateTime(Date createdDateTime) {
+		this.createdDateTime = createdDateTime;
+	}
+
+	public Date getUpdatedDateTime() {
+		return updatedDateTime;
+	}
+
+	public void setUpdatedDateTime(Date updatedDateTime) {
+		this.updatedDateTime = updatedDateTime;
 	}
 }

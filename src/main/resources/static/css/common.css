@@ -148,7 +148,7 @@ body {
 }
 
 .product-container {
-	height: 475px;
+/* 	height: 475px; */
 }
  
 .product-preview-container {
@@ -171,3 +171,165 @@ body {
     padding-left: 5px;
     margin:5px;
 }
+
+b, strong {
+    font-weight: bold !important;
+}
+
+.rHead {
+	border-color: #191a1b;
+	padding: 12px 12px;
+    display: block;
+    font-weight: bold;
+    border-bottom: 2px solid;
+}
+
+.ic {
+    padding: 10px;
+}
+
+.h2 {
+	color: #c00;
+    position: relative;
+    font-size: 16px;
+    line-height: 1.2em;
+}
+
+.b2, .b3 {
+    float: left;
+    font-weight: normal;
+    margin-right: 3px;
+    line-height: 1.5em;
+    color: #ccc;
+    padding-left: 20px;
+}
+
+.ofh {
+    overflow: hidden;
+}
+
+.tcl ul ul {
+    margin: 5px 0 0 0;
+    padding: 0;
+    list-style: none;
+}
+
+.tcl.divider ul > li li {
+    border-bottom: none;
+}
+
+.tcl li li {
+    padding: 2px 0;
+    margin: 0;
+    
+    list-style: none;
+}
+
+.b3:before {
+    content: '\e827';
+}
+
+.b2:before, .b3:before {
+    font-family: 'icomoon';
+}
+
+.b2, .b3 {
+    float: left;
+    font-weight: normal;
+    margin-right: 3px;
+    line-height: 1.5em;
+    color: #ccc;
+}
+
+.col-3 {
+	width: 25%;
+    padding: 0 15px;
+    box-sizing: border-box;
+    box-sizing: content-box;
+    vertical-align: top;
+    display: table-cell;
+}
+
+.page-container {
+	padding-bottom: 80px;
+}
+
+.category-title {
+	color: #191a1b;
+	border-color: rgba(0,0,0,0.13);
+	border-bottom: 1px solid #999;
+	font-size: 1.4em;
+	padding-bottom: 5px;
+	margin-bottom: 10px;
+	font-weight: bold;
+}
+
+.category-description {
+	text-align: justify;
+}
+
+ 
+.dif {
+	color: #191a1b;
+	
+}
+
+.column_Box {
+	margin-top: 15px;
+}
+.mc {
+	    background: rgba(255,255,255,0.4);
+	    border: 1px solid rgba(0,0,0,0.13);
+}
+
+.page-title-inner {
+/* 	padding: 35px 0px; */
+	display: table;
+    width: 100%;
+    color: #9d9d9d;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    margin: 0;
+    padding-left: 26px;
+}
+
+div {
+	margin: 0;
+    padding: 0;
+    border: 0;
+    font-size: 100%;
+    font: inherit;
+    /* vertical-align: baseline; */
+}
+
+.headBg {
+    background-attachment: fixed;
+    background-color: #222222;
+    background-image: url(//catalog.wlimg.com/templates-images/12569/12573/pattern_n2.png);
+    clear: both;
+    color: #fff;
+    display: block;
+    overflow: hidden;
+    padding: 0;
+    position: relative;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0.02) inset, 0 -5px 5px rgba(0, 0, 0, 0.02) inset;
+}
+
+.headBg .breadcrumb {
+    background: transparent;
+    margin-bottom: 0px;
+    padding: 2px;
+    float: left;
+    color: #9d9d9d;
+    font-size: 18px;
+}
+
+.page-title-inner .breadcrumb a {
+    color: #9d9d9d;
+    font-size: 18px;
+}
+
+
+
+

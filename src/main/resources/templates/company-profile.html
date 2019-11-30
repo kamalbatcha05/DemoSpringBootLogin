@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+<!--     <meta name="viewport" content="width=device-width, initial-scale=1"> -->
+
+<title>Company Profile</title>
+<link rel="stylesheet" type="text/css" th:href="@{/css/common.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/viewProduct.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/main.css}" />
+<link rel="stylesheet" type="text/css" th:href="@{/css/util.css}" />
+<link rel="stylesheet" th:href="@{/css/bootstrap.min.css}" />
+<script src="/js/jquery-3.0.0.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+
+<link rel="icon" type="image/png" href="/img/icons/title-icon.png"/>
+
+</head>
+
+<body>
+	<div th:replace="fragments/header :: header">Header</div>
+
+
+	<section class="headBg theme2 bread-right">
+		<div class="wrap">
+			<div class="page-title-inner fo">
+
+				<div class="h1">
+					<h1>Company Profile</h1>
+				</div>
+				<p class="breadcrumb ar uu small">
+					<a href="/" title="Home">Home</a>
+					<b class="ffv p2px">/</b> <span>Company Profile</span>
+				</p>
+				
+			</div>
+		</div>
+	</section>
+	
+	
+	<div class="container home-panel col-lg-12 col-md-12 col-sm-12 col-xs-12 page-container">
+	
+		<div class="col-lg-9 col-md-9 col-sm-9 col-xs-9">
+			<div>
+			<p>
+			We would like to introduce ourselves as your partner in healthcare industry.
+			<br></br>The ever increasing demand from the health industry helps us serve with perfection and professionalism, which works as the driving force behind the success. Incorporated in Year 2018, We are registered on Trade Mark[TM] with the brand name of NRA Groups. Company gained nationaly recognisation as a proficient supplier of range of wide variety of disposable products. The Requirement of disposable products differs from industry to industry.The product such as Disposable Cap and Face Mask, Disposable Shoe Cover, Gloves, Gowns etc..are extensively used in Hospital, Pharmaceutical, Chemical and other industries.We are supported by a team of experts, who assist us in designing our range of products in bulk quantities. The use of sophisticated testing methods ensures that all our products meets the international standards. Further with our ethical business practices and client centric approach has helped us win many clients based in INDIA. For any further inquiry or assistance kindly feel free to contact.
+
+			<br></br>
+			<br></br>
+			The raw materials used in the manufacturing of our products are of high grade quality thus provides superior quality. We continuously strive to maintain international standards of quality. The never dying quest to serve quest to serve the health industry with perfection and professionlism servers as the driving force behind the success of our comapany. All our products are widly appreciated by various Clients. Disposable are easy to use, simple yet effective of superior quality.
+			</p>
+			
+			</div>
+		
+		</div>
+		
+		<div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+			<div class="column_Box mc thinColumnLink">
+				<div class="tcl bullet divider dif">
+					<div class="h h2">
+						<b class="plusMinus"></b>
+						<p class="b dif rHead">
+							<a href="/products" class="dif" title="Products">Products</a>
+						</p>
+					</div>
+					<div class="ic showHide_rp">
+
+						<div th:each="category : ${categories}">
+							<ul>
+								<li><b class="b2 fl"></b>
+									<p class="ofh b">
+
+										<span th:utext="${category.categoryName}"></span>
+									</p>
+									<div th:each="product : ${category.products}">
+										<ul class="">
+											<li><b class="b3 fl"></b>
+												<p class="ofh">
+													<a th:href="@{|/view-product/${product.id}|}" title="">
+														<span th:utext="${product.productName}"></span>
+													</a>
+												</p></li>
+										</ul>
+
+									</div></li>
+
+							</ul>
+						</div>
+
+
+
+					</div>
+				</div>
+			</div>
+			<div class="column_Box mc qc">
+				<div class="h h2">
+					<b class="plusMinus"></b>
+					<p class="b dif rHead">Contact Us</p>
+				</div>
+				<div class="ic showHide_rp">
+					<div class="uu lh13em">
+						<p class="dif b">NRA Groups</p>
+						<p class="hr bdrB"></p>
+						<p>20, Sarita, Prabhat Industrial Estate, Near Dahisar Toll
+							Naka, Dahisar East, Dahisar, Mumbai, Maharashtra - 400068, India</p>
+						<p class="hr bdrB"></p>
+						<p>
+							<b>Mobile :</b> +91-9819324236, +91-9819324232
+						</p>
+						<p class="hr bdrB"></p>
+						<p>
+							<b>Phone :</b> +91-22-28225998
+						</p>
+						<p class="hr bdrB"></p>
+						<p>
+							<b>Call Us : </b><span class="b dif large">08049672131</span>
+						</p>
+						<p class="hr bdrB"></p>
+					</div>
+				</div>
+			</div>
+		</div>
+	
+	</div>
+	
+	
+
+
+
+
+	<div th:replace="fragments/footer :: footer">Footer</div>
+</body>
+</html>
