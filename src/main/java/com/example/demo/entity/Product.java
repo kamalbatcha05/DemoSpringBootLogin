@@ -10,11 +10,12 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
-import org.hibernate.validator.constraints.NotEmpty;
+import org.hibernate.validator.constraints.NotBlank;
 
 import com.example.demo.utils.JsonObjectSerializer;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
@@ -24,17 +25,19 @@ import com.fasterxml.jackson.databind.annotation.JsonSerialize;
 @Table(name = "product")
 @JsonIgnoreProperties({"hibernateLazyInitializer","handler"})
 public class Product {
+
+	private static final String NOT_BLANK_MESSAGE = "The value may not be empty!";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "product_id")
 	private int id;
 
-	@NotEmpty
+	@NotBlank(message = NOT_BLANK_MESSAGE)
 	@Column(name = "product_name")
 	@Size(max = 25)
 	private String productName;
-	
-	@NotEmpty
+
 	@Column(name = "status")
 	@Size(max = 25)
 	private String status;
@@ -45,6 +48,7 @@ public class Product {
 	@ManyToOne
 	@JoinColumn(name = "category_id", nullable = false)
 	@JsonSerialize(using = JsonObjectSerializer.class)
+	@NotNull(message = "Category should not be empty!")
 	private Category category;
 
 	@CreationTimestamp

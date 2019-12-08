@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.example.demo.entity.Category;
+import com.example.demo.entity.User;
 import com.example.demo.service.CategoryService;
 import com.example.demo.utils.Constants;
 
@@ -41,11 +42,14 @@ public class CategoryController {
 		ModelAndView modelAndView = new ModelAndView();
 		category.setStatus(null != category && null != category.getStatus() ?
 				category.getStatus() : Constants.ACTIVE);
-		categoryService.saveCategory(category);
-		modelAndView.addObject("successMessage", "Category added successfully");
-		modelAndView.addObject("category", new Category());
-		modelAndView.setViewName("add-category");
+		
+        if (!bindingResult.hasErrors()) {
+        	categoryService.saveCategory(category);
+    		modelAndView.addObject("successMessage", "Category added successfully");
+    		modelAndView.addObject("category", new Category());
 
+        }
+		modelAndView.setViewName("add-category");
 		return modelAndView;
 	}
 

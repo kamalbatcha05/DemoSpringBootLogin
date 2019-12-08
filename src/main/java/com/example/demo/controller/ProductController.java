@@ -67,9 +67,11 @@ public class ProductController {
 		ModelAndView modelAndView = new ModelAndView();
 		product.setStatus(null != product && null != product.getStatus() ?
 				product.getStatus() : Constants.ACTIVE);
-		productService.saveProduct(product);
-		modelAndView.addObject("successMessage", "Product added successfully");
-        modelAndView.addObject("product", new Product());
+		if(!bindingResult.hasErrors()) {
+			productService.saveProduct(product);
+			modelAndView.addObject("successMessage", "Product added successfully");
+			modelAndView.addObject("product", new Product());
+		}
         modelAndView.addObject("categories", categoryService.getAllCategories());
         modelAndView.setViewName("add-product");
         

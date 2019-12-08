@@ -17,23 +17,25 @@ import javax.validation.constraints.Size;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.hibernate.validator.constraints.NotBlank;
 import org.hibernate.validator.constraints.NotEmpty;
 
 @Entity
 @Table(name = "category")
 public class Category {
 
+	private static final String NOT_BLANK_MESSAGE = "The value may not be empty!";
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	@Column(name = "category_id")
 	private int id;
 
-	@NotEmpty
+	@NotBlank(message = NOT_BLANK_MESSAGE)
 	@Column(name = "category_name")
 	@Size(max = 25)
 	private String categoryName;
-	
-	@NotEmpty
+
 	@Column(name = "status")
 	@Size(max = 25)
 	private String status;

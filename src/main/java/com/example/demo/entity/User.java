@@ -1,7 +1,9 @@
 package com.example.demo.entity;
 
 import lombok.Data;
+import org.hibernate.validator.constraints.Email;
 import org.hibernate.validator.constraints.Length;
+import org.hibernate.validator.constraints.NotBlank;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
@@ -19,18 +21,25 @@ import java.util.Set;
 @Entity
 @Table(name = "user")
 public class User {
-    
+
+    private static final String NOT_BLANK_MESSAGE = "The value may not be empty!";
+//    private static final String EMAIL_MESSAGE = "{email.message}";
+
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "user_id")
     private int id;
+    @NotBlank(message = NOT_BLANK_MESSAGE)
+//    @Email(message = EMAIL_MESSAGE)
     @Column(name = "email")
     private String email;
     @Column(name = "password")
     @Length(min = 5, message = "*Your password must have at least 5 characters")
     private String password;
+    @NotBlank(message = NOT_BLANK_MESSAGE)
     @Column(name = "first_name")
     private String firstName;
+    @NotBlank(message = NOT_BLANK_MESSAGE)
     @Column(name = "last_name")
     private String lastName;
     @Column(name = "active")
